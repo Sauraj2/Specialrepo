@@ -21,4 +21,18 @@ def solve(ans,outp,ind,s,dots):
         if valid(s[ind:i+1]):
             new_out=outp+s[ind:i+1]+'.'
             solve(ans,new_out,i+1,s,dots+1)
-restoreIpAddresses('25525511135')
+
+def checkPossibility(nums):
+        flag=False
+        for i in range(len(nums)-1):
+            if nums[i]>nums[i+1]:
+                if flag==True:
+                    return False
+                nums[i]=nums[i+1]
+                flag=True
+
+        return True
+
+checkPossibility([3,4,2,3])
+
+
