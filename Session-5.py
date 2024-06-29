@@ -33,6 +33,22 @@ def checkPossibility(nums):
 
         return True
 
-checkPossibility([3,4,2,3])
-
+def removeDuplicates(s):
+    temp=list(s)
+    z=''
+    i=0
+    while i<len(temp)-1 and i>=0:
+        if temp[i]==temp[i+1]:
+            temp.pop(i)
+            temp.pop(i)
+            if i>1:
+                i-=1
+            else:
+                i=0
+            continue
+        i+=1
+        
+    for i in temp:
+        z+=i
+    return z
 
