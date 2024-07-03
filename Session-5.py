@@ -52,3 +52,48 @@ def removeDuplicates(s):
         z+=i
     return z
 
+def findShortestSubArray(nums):
+        ss=set(nums)
+        cot=0
+        tep=[]
+        mini=float('inf')
+        for i in ss:
+            if nums.count(i)>cot:
+                cot=nums.count(i)
+        for i in ss:
+            if nums.count(i)==cot:
+                tep.append(i)
+        for x in tep:
+            n=len(nums)
+            a=0
+            while nums[a]!=x:
+                n-=1
+                a+=1
+            a=len(nums)-1
+            while nums[a]!=x:
+                n-=1
+                a-=1
+            mini=min(n,mini)
+        return mini
+
+def reverseOnlyLetters(s):
+        sit=[]
+        temp=list(s)
+        for i in range(len(s)):
+            if ord(temp[i])>=65 and ord(temp[i])<=90:
+                sit.append(temp[i])
+                temp[i]='10'
+                continue
+            if ord(temp[i])>=97 and ord(temp[i])<=122:
+                sit.append(temp[i])
+                temp[i]='10'
+        sit=sit[::-1]
+        for i in range(len(temp)):
+            if temp[i]=='10':
+                temp[i]=sit.pop(0)
+        sst=''
+        for a in temp:
+            sst+=a
+        return sst
+
+reverseOnlyLetters('z<*zj')
