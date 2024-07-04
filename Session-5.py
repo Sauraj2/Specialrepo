@@ -96,4 +96,59 @@ def reverseOnlyLetters(s):
             sst+=a
         return sst
 
-reverseOnlyLetters('z<*zj')
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+    
+def mergeNodes(head):
+    sum=0
+    temp=ListNode()
+    ans=temp
+    while head:
+        if head.val==0:
+            head=head.next
+            if head==None:
+                break
+            while head.val!=0:
+                sum+=head.val
+                head=head.next
+            temp.val=sum
+            
+            temp.next=ListNode()
+            temp=temp.next
+            sum=0
+    temp=ans
+    if not temp:
+        return
+    while temp.next.next:
+        temp=temp.next
+    temp=None
+    return ans
+
+class LinkedList:
+    def __init__(self) :
+        self.head=None
+    
+    def append(self,val):
+        new=ListNode(val)
+        if not self.head:
+            self.head=new
+            return
+        else:
+            las=self.head
+            while las.next:
+                las=las.next
+            else:
+                las.next=new
+        return
+'''apr=LinkedList()
+apr.append(0)
+apr.append(3)
+apr.append(1)
+apr.append(0)
+apr.append(4)
+apr.append(5)
+apr.append(2)
+apr.append(0)
+mergeNodes(apr.head)'''
