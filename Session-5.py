@@ -152,3 +152,24 @@ apr.append(5)
 apr.append(2)
 apr.append(0)
 mergeNodes(apr.head)'''
+
+def findRelativeRanks(score):
+        b=1
+        tmp=[0]*len(score)
+        med=["Gold Medal","Silver Medal","Bronze Medal"]
+        a=sorted(score,reverse=True)
+        for i in range(len(score)):
+            ind=score.index(a[i])
+            tmp[ind]=b
+            b+=1
+        for i in range(len(tmp)):
+            if tmp[i]==1:
+                tmp[i]=med[0]
+            if tmp[i]==2:
+                tmp[i]=med[1]
+            if tmp[i]==3:
+                tmp[i]=med[2]
+            else:
+                continue
+        return tmp
+            
