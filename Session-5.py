@@ -172,4 +172,75 @@ def findRelativeRanks(score):
             else:
                 continue
         return tmp
+
+def compareVersion( version1, version2):
+        a=str.split(version1,'.')
+        b=str.split(version2,'.')
+        n=len(a)
+        o=len(b)
+        if n>o:
+            b.extend([0]*(n-o))
+        elif o>n:
+            a.extend([0]*(o-n))
+
+        for i in range(len(a)):
+            if (int(a[i])>int(b[i])):
+                return 1
+            if (int(a[i])<int(b[i])):
+                return -1
+        return 0
+
+def isIsomorphic( s,t):
+    di={}
+    di1={}
+    for i in range(len(s)):
+        if s[i] in di.keys() and di[s[i]]!=t[i]:
+            return False
+        elif s[i] in di.keys() and di[s[i]]==t[i]:
+            pass
+        if s[i] not in di.keys():
+            di[s[i]]=t[i]
+        
+        if t[i] in di1.keys() and di1[t[i]]!=s[i]:
+            return False
+        elif t[i] in di1.keys() and di1[t[i]]==s[i]:
+            pass
+        if t[i] not in di1.keys():
+            di1[t[i]]=s[i]
+        
+    
+    return True
+
+def minMoves2(nums):
+        nums.sort()
+        mid=nums[len(nums)//2]
+        count=0
+        for i in nums:
+            count+=abs(mid-i)
+        return count
+    
+def findDuplicates(nums):
+        seen=set()
+        res=[]
+        for i in range(len(nums)):
+            if nums[i] in seen:
+                res.append(nums[i])
+            if nums[i] not in seen:
+                seen.add(nums[i])
+        return res
+    
+def addDigits(num) :
+        num=str(num)
+        while len(num)!=1:
+            tmp=0
+            for i in str(num):
+                tmp+=int(i)
+            num=str(tmp)
             
+        return num    
+
+
+
+
+
+
