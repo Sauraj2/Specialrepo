@@ -238,9 +238,52 @@ def addDigits(num) :
             num=str(tmp)
             
         return num    
+    
+def minIncrementForUnique(nums):
+        nums.sort()
+        tmp=[]
+        ans=0
+        flag=False
+        for i in range(len(nums)):
+            if nums[i] not in tmp:
+                tmp.append(nums[i])
+            else:
+                flag=True
+                a=nums[i]+1
+                ans+=1
+                while a in nums:
+                    
+                    a+=1
+                    ans+=1
+                nums[i]=a
+                tmp.append(a)
+        if flag==False:
+            return 0
+        return ans
+
+#minIncrementForUnique([3,2,1,2,1,7])
 
 
+def bitwiseComplement(n) :
+        if n==0:
+            return 0
+        temp=bin(n).replace("0b", "") 
+        temp=list(temp)
+        for i in range(len(temp)):
+            if temp[i]=='1':
+                temp[i]='0'
+                continue
+            if temp[i]=='0':
+                temp[i]='1'
+        c=''
+        c=c.join(temp)
+        return int(c,2)
 
-
-
-
+def findWords( words):
+        line1,line2,line3=set('qwertyuiop'),set('asdfghjkl'),set('zxcvbnm')
+        valid_words=[]
+        for i in words:
+            w=set(i.lower())
+            if w<=line1 or w<=line2 or w<=line3:
+                valid_words.append(i)
+        return valid_words
